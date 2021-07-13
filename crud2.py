@@ -11,9 +11,9 @@ db = mysql.connector.connect(
 
 
 while True:
-    print('=============================================')
+    print('==============================================')
     print('           CADASTRO DE CONTATOS')
-    print('=============================================')
+    print('==============================================')
     print('')
     opcao = input('LISTA DE COMANDOS.\n'
     '[1] - INSERIR CONTATO\n'

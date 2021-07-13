@@ -7,8 +7,8 @@
 
 ## Informações do projeto  
 
-+ Cadastro de contatos.
-+ Campos - ID, NOME, SOBRENOME, CPF, EMAIL, TELEFONE.
-+ Colunas construidas diretamente no Workbench.
++ Cadastro de contatos
++ Campos - ID, NOME, SOBRENOME, CPF, EMAIL, TELEFONE
++ Colunas construidas diretamente no Workbench
 + Script Python realiza os comandos SQL - CREATE, UPDATE, SELECT, DELETE
-+ Script Python construido utilizando programação estruturada.
++ Script Python construido utilizando programação estruturada

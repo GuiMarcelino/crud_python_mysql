@@ -5,7 +5,7 @@ from types import prepare_class
 def insert(db):
     
     print('Vamos adicionar um contato!!!')
-    print('')
+    print(' ')
     nome = input('Informe o nome: ')
     sobrenome = input('sobrenome: ')
     cpf = input('CPF: ')
