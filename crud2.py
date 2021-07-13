@@ -1,10 +1,3 @@
-# python e Mysql
-# Criar um Crud simples, usando funções ou orientação a objetos
-# cada operação deve estar isolada(uma função para cada operação)
-# validar os cmapos e não ter informações duplicada (validar pelo CPF),
-# cadastro de contatos.
-
-#ID (PRIMARY KEY AUTO _INCREMENT), NOME, SOBRENOME, CPF (UNIQUE), EMAIL, TELEFONE
 
 from funcoes import  alter, insert, select_all, select_id
 import mysql.connector
