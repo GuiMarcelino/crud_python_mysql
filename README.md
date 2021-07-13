@@ -5,7 +5,7 @@
 
 > __Status do Projeto: Em desenvolvimento__ ⚠️
 
-## Informações do projeto 
+## Informações do projeto  
 
 + Cadastro de contatos.
 + Campos - ID, NOME, SOBRENOME, CPF, EMAIL, TELEFONE.
