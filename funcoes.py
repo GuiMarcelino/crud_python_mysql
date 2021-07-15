@@ -1,13 +1,9 @@
-
-from types import prepare_class
-
-
 def insert(db):
     
     print('Vamos adicionar um contato!!!')
     print(' ')
-    nome = input('Informe o nome: ')
-    sobrenome = input('sobrenome: ')
+    nome = input('Informe o nome: ').title
+    sobrenome = input('sobrenome: ').title
     cpf = input('CPF: ')
     email = input('Email: ')
     telefone = input('Telefone: ')
@@ -30,9 +26,15 @@ def alter(db):
         alterar_campo = input('Selecione o campo que deseja alterar: ')
         valor_alterado = input(f'Insira um novo dado no campo {alterar_campo}: ')
         if alterar_campo == 'NOME':
-            nome = valor_alterado
+            nome = valor_alterado.title
         elif alterar_campo == 'SOBRENOME':
-            sobrenome = valor_alterado
+            sobrenome = valor_alterado.title
+        elif alterar_campo == 'CPF':
+            alterar_campo =  valor_alterado
+        elif alterar_campo == 'EMAIL':
+            alterar_campo = valor_alterado
+        elif alterar_campo == 'TELEFONE':
+            alterar_campo = valor_alterado
         cursor = db.cursor()
         comando_sql = "UPDATE CONTATOS SET NOME = %s, SOBRENOME = %s, cpf = %s, email = %s, telefone = %s WHERE ID = %s"
         parametros = (nome, sobrenome, cpf, email, telefone, id)
@@ -49,11 +51,8 @@ def alter(db):
         print('')
         cursor.close()
 
-    except Exception as err:
-        print(err)
-        
-        
-   
+    except:
+        print('Não foi possivel alterar o contato.')
 
 def select_all(db):
     print('Lista de contatos')   
@@ -63,12 +62,13 @@ def select_all(db):
         comando_sql = "SELECT * FROM CONTATOS"
         cursor.execute(comando_sql)
         resultado = cursor.fetchall()
-        for linha in resultado:
-            print(f'Nome: {linha[1]}\n'
-            f'Sobrenome: {linha[2]}\n'
-            f'CPF: {linha[3]}\n'
-            f'email: {linha[4]}\n'
-            f'telefone: {linha[5]}')
+        for registro in resultado:
+            print(f'ID: {registro[0]}\n'
+            f'Nome: {registro[1]}\n'
+            f'Sobrenome: {registro[2]}\n'
+            f'CPF: {registro[3]}\n'
+            f'email: {registro[4]}\n'
+            f'telefone: {registro[5]}')
             print('===================================')
             print('')
         cursor.close()
