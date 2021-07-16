@@ -1,5 +1,5 @@
 
-from funcoes import  alter, insert, select_all, select_id
+from funcoes import *
 import mysql.connector
 
 db = mysql.connector.connect(
@@ -28,13 +28,19 @@ while True:
         insert(db)
 
     elif opcao =='2':
-        alter(db)
+        update(db)
 
     elif opcao == '3':
         select_all(db)
 
     elif opcao == '4':
         select_id(db)
+
+    elif opcao == '5':
+        delete(db)
+
+    elif opcao == '6':
+        exit()
 
 
 

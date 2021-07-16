@@ -1,9 +1,10 @@
+
 def insert(db):
     
     print('Vamos adicionar um contato!!!')
     print(' ')
-    nome = input('Informe o nome: ').title
-    sobrenome = input('sobrenome: ').title
+    nome = input('Informe o nome: ')
+    sobrenome = input('sobrenome: ')
     cpf = input('CPF: ')
     email = input('Email: ')
     telefone = input('Telefone: ')
@@ -18,17 +19,18 @@ def insert(db):
     except:
         print('Contato não inserido.')
 
-def alter(db):
+def update(db):
     print('Alterar Contato.')
     print('')
     try:
-        id, nome, sobrenome, cpf, email, telefone = select_id(db)
+        nome, sobrenome, cpf, email, telefone = select_id(db)
+        id_update = int(input('Selecione o ID que deseja alterar:'))
         alterar_campo = input('Selecione o campo que deseja alterar: ')
         valor_alterado = input(f'Insira um novo dado no campo {alterar_campo}: ')
         if alterar_campo == 'NOME':
-            nome = valor_alterado.title
+            nome = valor_alterado
         elif alterar_campo == 'SOBRENOME':
-            sobrenome = valor_alterado.title
+            sobrenome = valor_alterado
         elif alterar_campo == 'CPF':
             alterar_campo =  valor_alterado
         elif alterar_campo == 'EMAIL':
@@ -37,7 +39,7 @@ def alter(db):
             alterar_campo = valor_alterado
         cursor = db.cursor()
         comando_sql = "UPDATE CONTATOS SET NOME = %s, SOBRENOME = %s, cpf = %s, email = %s, telefone = %s WHERE ID = %s"
-        parametros = (nome, sobrenome, cpf, email, telefone, id)
+        parametros = (nome, sobrenome, cpf, email, telefone, id_update)
         cursor.execute(comando_sql, parametros)
         db.commit()
         cursor.close()
@@ -77,7 +79,6 @@ def select_all(db):
         print('Não foi possivel visualizar os contatos.')
 
 def select_id(db):
-    print('')
     try: 
         id_contato = int(input('Informe o número do ID que deseja visualizar: '))
         cursor = db.cursor()
@@ -96,4 +97,31 @@ def select_id(db):
         
     except:
         print('Não foi possivel visualiza o contato.')
+
+
+def delete(db):
+    try:
+        id_contato_delete = int (input('Informe o ID do contato que deseja deletar: '))
+        cursor = db.cursor()
+        comando_sql = f"DELETE FROM CONTATOS WHERE ID = {id_contato_delete}"
+        cursor.execute(comando_sql)
+        db.commit()
+        cursor.close()
+        print(f'Contato com ID: {id_contato_delete} excluido com sucesso')
+        
+
+    except:
+        print('Não foi possivel deletar o contato.')
+
+def exit():
+    try:
+        return print('Cadastros finalizados!!!')
+
+    except:
+        print('Não foi possivél finalizar o Cadastro')
+
+        
+    
+
+
     
