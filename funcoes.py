@@ -101,7 +101,7 @@ def select_id(db):
 
 def delete(db):
     try:
-        id_contato_delete = int (input('Informe o ID do contato que deseja deletar: '))
+        id_contato_delete = int(input('Informe o ID do contato que deseja deletar: '))
         cursor = db.cursor()
         comando_sql = f"DELETE FROM CONTATOS WHERE ID = {id_contato_delete}"
         cursor.execute(comando_sql)
