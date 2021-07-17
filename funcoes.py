@@ -23,19 +23,18 @@ def update(db):
     print('Alterar Contato.')
     print('')
     try:
-        nome, sobrenome, cpf, email, telefone = select_id(db)
-        id_update = int(input('Selecione o ID que deseja alterar:'))
+        id_update, nome, sobrenome, cpf, email, telefone = select_id(db)
         alterar_campo = input('Selecione o campo que deseja alterar: ')
         valor_alterado = input(f'Insira um novo dado no campo {alterar_campo}: ')
-        if alterar_campo == 'NOME':
+        if alterar_campo.lower == 'NOME':
             nome = valor_alterado
-        elif alterar_campo == 'SOBRENOME':
+        elif alterar_campo.lower() == 'SOBRENOME':
             sobrenome = valor_alterado
-        elif alterar_campo == 'CPF':
-            alterar_campo =  valor_alterado
-        elif alterar_campo == 'EMAIL':
-            alterar_campo = valor_alterado
-        elif alterar_campo == 'TELEFONE':
+        elif alterar_campo.lower() == 'CPF':
+            alterar_campo.lower() =  valor_alterado
+        elif alterar_campo.lower() == 'EMAIL':
+            alterar_campo.lower() = valor_alterado
+        elif alterar_campo.lower() == 'TELEFONE':
             alterar_campo = valor_alterado
         cursor = db.cursor()
         comando_sql = "UPDATE CONTATOS SET NOME = %s, SOBRENOME = %s, cpf = %s, email = %s, telefone = %s WHERE ID = %s"
@@ -53,8 +52,8 @@ def update(db):
         print('')
         cursor.close()
 
-    except:
-        print('Não foi possivel alterar o contato.')
+    except Exception as erro:
+        print(erro)
 
 def select_all(db):
     print('Lista de contatos')   
