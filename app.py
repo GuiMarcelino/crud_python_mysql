@@ -40,7 +40,7 @@ while True:
         delete(db)
 
     elif opcao == '6':
-        exit()
+         exit()
 
 
 

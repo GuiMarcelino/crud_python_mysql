@@ -3,7 +3,8 @@
 ### Crud simples com python e comando SQL
 #### tecnologias utilizadas - Python 3.9.4 , Db MySQL Workbench
 
-> __Status do Projeto: Em desenvolvimento__ ⚠️
+> Status do Projeto: Concluido :heavy_check_mark:
+
 
 ## Informações do projeto  
 

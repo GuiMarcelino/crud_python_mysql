@@ -3,8 +3,8 @@ def insert(db):
     
     print('Vamos adicionar um contato!!!')
     print(' ')
-    nome = input('Informe o nome: ')
-    sobrenome = input('sobrenome: ')
+    nome = input('Informe o nome: ').title()
+    sobrenome = input('sobrenome: ').title()
     cpf = input('CPF: ')
     email = input('Email: ')
     telefone = input('Telefone: ')
@@ -17,25 +17,25 @@ def insert(db):
         cursor.close()
         print(' novo contato inserido !!!')
     except:
-        print('Contato não inserido.')
+        print('Contato não inserido, tente novamente ou solicite o suporte técnico')
 
 def update(db):
     print('Alterar Contato.')
     print('')
     try:
         id_update, nome, sobrenome, cpf, email, telefone = select_id(db)
-        alterar_campo = input('Selecione o campo que deseja alterar: ')
+        alterar_campo = input('Selecione o campo que deseja alterar: ').upper()
         valor_alterado = input(f'Insira um novo dado no campo {alterar_campo}: ')
-        if alterar_campo.lower == 'NOME':
-            nome = valor_alterado
-        elif alterar_campo.lower() == 'SOBRENOME':
-            sobrenome = valor_alterado
-        elif alterar_campo.lower() == 'CPF':
-            alterar_campo.lower() =  valor_alterado
-        elif alterar_campo.lower() == 'EMAIL':
-            alterar_campo.lower() = valor_alterado
-        elif alterar_campo.lower() == 'TELEFONE':
-            alterar_campo = valor_alterado
+        if alterar_campo == 'NOME':
+            nome = valor_alterado.title()
+        elif alterar_campo == 'SOBRENOME': 
+            sobrenome = valor_alterado.title()
+        elif alterar_campo == 'CPF':
+            cpf = valor_alterado
+        elif alterar_campo == 'EMAIL':
+            email = valor_alterado
+        elif alterar_campo == 'TELEFONE':
+            telefone = valor_alterado
         cursor = db.cursor()
         comando_sql = "UPDATE CONTATOS SET NOME = %s, SOBRENOME = %s, cpf = %s, email = %s, telefone = %s WHERE ID = %s"
         parametros = (nome, sobrenome, cpf, email, telefone, id_update)
@@ -52,8 +52,8 @@ def update(db):
         print('')
         cursor.close()
 
-    except Exception as erro:
-        print(erro)
+    except:
+        print('Erro ao tentar alterar, tente novamente ou solicite o suporte técnico')
 
 def select_all(db):
     print('Lista de contatos')   
@@ -75,7 +75,8 @@ def select_all(db):
         cursor.close()
 
     except:
-        print('Não foi possivel visualizar os contatos.')
+        print('Não foi possível visualizar a lista de contatos, '
+        f' tente novamente ou solicite o suporte técnico')
 
 def select_id(db):
     try: 
@@ -95,7 +96,7 @@ def select_id(db):
         return registro
         
     except:
-        print('Não foi possivel visualiza o contato.')
+        print('Não foi possivel visualiza o contato, tente novamente ou solicite o suporte técnico')
 
 
 def delete(db):
